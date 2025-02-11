@@ -7,6 +7,7 @@ VARIABLES DE ENTRADA
 -	Descuentos Tributarios
 -	Retenciones en la Fuente
 -	Patrimonio
+-	Valor del UVT (Año cerrado)
   
 VARIABLES DE SALIDA
 -	Base Gravable
