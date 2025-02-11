@@ -7,6 +7,7 @@ VARIABLES DE ENTRADA
 -	Descuentos Tributarios
 -	Retenciones en la Fuente
 -	Patrimonio
+-	
 VARIABLES DE SALIDA
 -	Base Gravable
 -	Impuesto a pagar
