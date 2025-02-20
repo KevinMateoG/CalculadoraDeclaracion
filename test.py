@@ -18,6 +18,22 @@ class tests(unittest.TestCase):
         calculated_tax = main.tax_payment(uvt_value, gross_income, costs_deductions, exempt_income, tax_discounts, withholdings, patrimony)
         
         self.assertEqual(calculated_tax, expected_result)
+     def test_normal_2(self):
+        uvt_value = 47065
+        gross_income = 100_000_000
+        costs_deductions = 0
+        exempt_income = 0
+        tax_discounts = 0
+        withholdings = 1_000_000
+        patrimony = 200_000_000
+        rate = 0.19
+
+        expected_result = 70_000_000, 1_487, 19, 12_300_000, 0
+
+        calculated_tax = main.tax_payment(uvt_value, gross_income, costs_deductions, exempt_income, tax_discounts, withholdings, patrimony)
+
+        self.assertEqual(calculated_tax, expected_result)
+        
     def test_extraordinary_1(self):
         uvt_value = 47065
         gross_income = 500_000_000
