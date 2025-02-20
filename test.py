@@ -13,11 +13,11 @@ class tests(unittest.TestCase):
         patrimony = 200_000_000
         rate = 0.28
     
-        resultado_esperado = 22_300_000
+        expected_result = 85_000_000, 1_806, 28, 22_300_000, 0
 
-        calculated_tax = main.tax_payment(uvt_value, gross_income, costs_deductions, exempt_income, tax_discounts, withholdings, patrimony, rate)
+        calculated_tax = main.tax_payment(uvt_value, gross_income, costs_deductions, exempt_income, tax_discounts, withholdings, patrimony)
         
-        self.assertEqual(calculated_tax, resultado_esperado)
+        self.assertEqual(calculated_tax, expected_result)
 
 if __name__ == '__main__':
     unittest.main(exit=False)
