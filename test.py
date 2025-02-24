@@ -34,6 +34,20 @@ def test_normal_2(self):
 
     self.assertEqual(calculated_tax, expected_result)
 
+def test_normal_3(self):
+    uvt_value = 47065
+    gross_income = 69_178_000
+    costs_deductions = 5_000_000
+    exempt_income = 3_000_000
+    tax_discounts = 500_000
+    withholdings = 1_000_000
+    patrimony = 200_000_000
+
+    expected_result = (60_178_000, 1_276, 28, 15_800_000, 0)
+
+    calculated_tax = main.tax_payment(uvt_value, gross_income, costs_deductions, exempt_income, tax_discounts, withholdings, patrimony)
+
+    self.assertEqual(calculated_tax, expected_result)
         
     def test_extraordinary_1(self):
         uvt_value = 47065
