@@ -1,6 +1,8 @@
 class ErrorRentaExenta(Exception):
     """ ERROR: La renta exenta no puede ser negativa """
 
+class ErrorBaseGravable(Exception):
+    """ ERROR: La Base Gravable no puede ser negativa """
 
 def tax_payment(uvt_value, gross_income, costs_deductions, exempt_income, tax_discounts, withholdings, patrimony):
 
