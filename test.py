@@ -112,5 +112,23 @@ class tests(unittest.TestCase):
         except main.ErrorRentaExenta as ex:
             pass
 
+    def test_error_2(self):
+
+        uvt_value = 47065
+        gross_income = 30_000_000
+        costs_deductions = 40_000_000
+        exempt_income = 5_000_000
+        tax_discounts = 0
+        withholdings = 0
+        patrimony = 50_000_000
+
+        try:
+            expected_result = main.tax_payment(uvt_value, gross_income, costs_deductions, exempt_income, tax_discounts, withholdings, patrimony)
+
+            self.fail("No sirvió bro")
+
+        except main.ErrorBaseGravable as ex:
+            pass
+
 if __name__ == '__main__':
     unittest.main()
