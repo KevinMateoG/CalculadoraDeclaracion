@@ -1,4 +1,6 @@
-# VARIABLES DE ENTRADA Y SALIDA
+# PROYECTO CALCULADORA DE IMPUESTO A PAGAR DE DECLARACIÓN DE RENTA
+
+## VARIABLES DE ENTRADA Y SALIDA
 
 VARIABLES DE ENTRADA
 -	Ingresos Brutos
@@ -14,5 +16,5 @@ VARIABLES DE SALIDA
 -	Impuesto a pagar
 -	Saldo a favor (Si aplica)
 
-# Audio con el experto
+## Audio con el experto
 Link de Drive: https://drive.google.com/file/d/15PLIftSmdbX2hj9vXdWDiRgb2k7XdemK/view?usp=sharing
