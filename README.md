@@ -2,7 +2,7 @@
 
 ## VARIABLES DE ENTRADA Y SALIDA
 
-** VARIABLES DE ENTRADA **
+**VARIABLES DE ENTRADA**
 -	Ingresos Brutos
 -	Costos y Gastos Deducibles
 -	Rentas Exentas
@@ -11,7 +11,7 @@
 -	Patrimonio
 -	Valor del UVT (Año cerrado)
   
-VARIABLES DE SALIDA
+**VARIABLES DE SALIDA**
 -	Base Gravable
 -	Impuesto a pagar
 -	Saldo a favor (Si aplica)
