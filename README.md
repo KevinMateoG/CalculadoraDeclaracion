@@ -2,7 +2,7 @@
 
 ## VARIABLES DE ENTRADA Y SALIDA
 
-VARIABLES DE ENTRADA
+** VARIABLES DE ENTRADA **
 -	Ingresos Brutos
 -	Costos y Gastos Deducibles
 -	Rentas Exentas
