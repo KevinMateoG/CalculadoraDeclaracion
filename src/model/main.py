@@ -9,9 +9,13 @@ def tax_payment(uvt_value, gross_income, costs_deductions, exempt_income, tax_di
     if exempt_income < 0:
         raise ErrorRentaExenta()
 
+
     tax_base = gross_income - costs_deductions - exempt_income
     tax_base_uvt = tax_base / uvt_value if uvt_value else 0
-    
+
+    if tax_base < 0:
+        raise ErrorBaseGravable()
+
     if tax_base_uvt <= 1090:
         rate = 0.0
     elif tax_base_uvt <= 1700:

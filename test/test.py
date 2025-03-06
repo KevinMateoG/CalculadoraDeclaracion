@@ -1,5 +1,7 @@
 import unittest
-import main
+import sys 
+sys.path.append("src")
+from model import main
 
 class tests(unittest.TestCase):
 
