@@ -1,6 +1,12 @@
 # PROYECTO CALCULADORA DE IMPUESTO A PAGAR DE DECLARACIÓN DE RENTA 
 # by Cristian David Toro Arboleda & Pedro Hernández
 
+Calculadora que automáticamente calcula (valga la redundancia) el impuesto a pagar a la DIAN al declarar renta.
+
+## ¿Cómo ejecuto el programa?
+
+Desde el Command Prompt, dentro de la carpeta raíz del proyecto y con Python abierto 
+
 ## VARIABLES DE ENTRADA Y SALIDA
 
 **VARIABLES DE ENTRADA**
@@ -33,9 +39,6 @@ En el archivo main.py tenemos la lógica básica de la calculadora del impuesto 
 
 **test**
 En el archivo test.py tenemos todas las pruebas unitarias donde contenemos 4 pruebas normales, 2 pruebas extraordinarias y 2 pruebas de error, la librería utilizada para las pruebas unitarias fue aquella de Python llamada "Unittest" donde se compara un resultado esperado con el resultado que arroje la lógica del programa.
-
-## ¿Cómo ejecutar las pruebas?
-Es tan sencillo como simplemente tener el proyecto clonado y abierto en Visual Studio Code y usar la función de TESTING incorporada.
 
 
 
