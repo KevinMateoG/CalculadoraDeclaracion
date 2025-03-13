@@ -3,7 +3,6 @@ import sys
 sys.path.append("src")
 from model import main
 
-#Hola
 
 class tests(unittest.TestCase):
 
@@ -108,10 +107,13 @@ class tests(unittest.TestCase):
         withholdings = 0
         patrimony = 1_000_000
 
+        # Como se espera un error, se va a la lógica del programa y se verifica el caso de error, el cual es la renta exenta negativa.
         try:
             expected_result = main.tax_payment(uvt_value, gross_income, costs_deductions, exempt_income, tax_discounts, withholdings, patrimony)
 
             self.fail("No sirvió bro")
+
+        #   Una vez verificado que el error suceda, se trae la excepción y se muestra el mensaje al usuario.
 
         except main.ErrorRentaExenta as ex:
             pass
@@ -125,6 +127,42 @@ class tests(unittest.TestCase):
         tax_discounts = 0
         withholdings = 0
         patrimony = 50_000_000
+
+        try:
+            expected_result = main.tax_payment(uvt_value, gross_income, costs_deductions, exempt_income, tax_discounts, withholdings, patrimony)
+
+            self.fail("No sirvió bro")
+
+        except main.ErrorBaseGravable as ex:
+            pass
+
+    def test_error_3(self):
+
+        uvt_value = 47065
+        gross_income = 0
+        costs_deductions = 0
+        exempt_income = 0
+        tax_discounts = 0
+        withholdings = 0
+        patrimony = 150_000_000
+
+        try:
+            expected_result = main.tax_payment(uvt_value, gross_income, costs_deductions, exempt_income, tax_discounts, withholdings, patrimony)
+
+            self.fail("No sirvió bro")
+
+        except main.ErrorBaseGravable as ex:
+            pass
+
+    def test_error_4(self):
+
+        uvt_value = 47065
+        gross_income = 0
+        costs_deductions = 1_000_000
+        exempt_income = 0
+        tax_discounts = 0
+        withholdings = 0
+        patrimony = 0
 
         try:
             expected_result = main.tax_payment(uvt_value, gross_income, costs_deductions, exempt_income, tax_discounts, withholdings, patrimony)
