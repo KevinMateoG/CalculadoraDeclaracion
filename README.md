@@ -13,6 +13,12 @@ Desde el Command Prompt, dentro de la carpeta raíz del proyecto y con Python de
 Desde el Command Prompt, nuevamente, ejecutamos el siguiente comando:
 "[UBICACIÓN DEL PROYECTO DESCARGADO]\Proyecto_de_Aula>py test\test.py"
 
+## ¿ Cómo ejecuto la consola?
+
+Desde el CMD nuevamente, ejecutamos:
+"[UBICACIÓN DEL PROYECTO]\CalculadoraDeclaracion>py src\view\console.py"
+
+
 # Explicación del código
 
 ## Arquitectura del código
