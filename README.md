@@ -11,12 +11,16 @@ Desde el Command Prompt, dentro de la carpeta raíz del proyecto y con Python de
 ## ¿Cómo ejecuto las pruebas?
 
 Desde el Command Prompt, nuevamente, ejecutamos el siguiente comando:
+´´´
 "[UBICACIÓN DEL PROYECTO DESCARGADO]\CalculadoraDeclaracion>py test\test.py"
+´´´
 
 ## ¿ Cómo ejecuto la consola?
 
 Desde el CMD nuevamente, ejecutamos:
+´´´
 "[UBICACIÓN DEL PROYECTO]\CalculadoraDeclaracion>py src\view\console.py"
+´´´
 
 
 # Explicación del código
