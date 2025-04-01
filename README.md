@@ -6,7 +6,9 @@ Calculadora que automáticamente calcula (valga la redundancia) el impuesto a pa
 ## ¿Cómo ejecuto el programa?
 
 Desde el Command Prompt, dentro de la carpeta raíz del proyecto y con Python descargado ejecutamos el siguiente comando:
+```
 "[UBICACIÓN DEL PROYECTO DESCARGADO]\CalculadoraDeclaracion>py src\view\console.py"
+```
 
 ## ¿Cómo ejecuto las pruebas?
 
