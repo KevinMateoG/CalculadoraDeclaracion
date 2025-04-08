@@ -9,9 +9,9 @@ from kivy.uix.popup import Popup
 import sys
 sys.path.append("src")
 
-from model.main import tax_payment
+from model.Logic_taxes import tax_payment
 
-class MainApp (App):
+class TaxesApp (App):
     def build(self):
         contenedor = GridLayout(cols=2,padding=20,spacing=20)
 
@@ -88,30 +88,33 @@ class MainApp (App):
         # Mostramos la ventana emergente
         popup.open()
 
+class ErrorDatosIngresados(Exception):
+    pass
+
     def validar(self):
         """
         Verifica que todos datos ingresados por el usuario sean correctos
         """
         if( not( self.tax_base_uvt.text.isnumeric() )  ):
-            raise Exception( "El Valor del uvt debe ser un número válido"  )
+            raise ErrorDatosIngresados( "El Valor del uvt debe ser un número válido"  )
         
         if( not( self.tax_base.text.isnumeric() )  ):
-            raise Exception( "El Número de ingresos brutos debe ser un número válido"  )
+            raise ErrorDatosIngresados( "El Número de ingresos brutos debe ser un número válido"  )
 
         if( not( self.calculated_tax.text.isnumeric() )  ):
-            raise Exception( "El valor ingresado de costos y deducciones debe ser un número válido"  )
+            raise ErrorDatosIngresados( "El valor ingresado de costos y deducciones debe ser un número válido"  )
         
         if( not( self.calculated_tax.text.isnumeric() )  ):
-            raise Exception( "El valor ingresado de renta exenta debe ser un número válido"  )
+            raise ErrorDatosIngresados( "El valor ingresado de renta exenta debe ser un número válido"  )
 
         if( not( self.calculated_tax.text.isnumeric() )  ):
-            raise Exception( "El valor ingresado de descuentos tributarios debe ser un número válido"  )
+            raise ErrorDatosIngresados( "El valor ingresado de descuentos tributarios debe ser un número válido"  )
 
         if( not( self.calculated_tax.text.isnumeric() )  ):
-            raise Exception( "El valor ingresado de retención en la fuente debe ser un número válido"  )
+            raise ErrorDatosIngresados( "El valor ingresado de retención en la fuente debe ser un número válido"  )
 
         if( not( self.calculated_tax.text.isnumeric() )  ):
-            raise Exception( "El valor ingresado de patrimonio debe ser un número válido"  )
+            raise ErrorDatosIngresados( "El valor ingresado de patrimonio debe ser un número válido"  )
         
 if __name__ == "__main__":
-    MainApp().run()
+    TaxesApp().run()
