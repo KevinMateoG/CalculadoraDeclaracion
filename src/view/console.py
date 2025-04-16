@@ -1,6 +1,6 @@
 import sys
 sys.path.append("src/model")  
-import main
+from model.Logic_taxes import tax_payment
 
 def calcular_impuesto():
     uvt_value = int(input("Ingrese el valor de la UVT: "))
