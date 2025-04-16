@@ -1,7 +1,7 @@
 import unittest
 import sys 
 sys.path.append("src")
-from model import main
+from model.Logic_taxes import tax_payment, ErrorRentaExenta, ErrorBaseGravable
 
 
 class tests(unittest.TestCase):
@@ -17,7 +17,7 @@ class tests(unittest.TestCase):
     
         expected_result = 85_000_000, 1_806, 28, 22_300_000, 0
 
-        calculated_tax = main.tax_payment(uvt_value, gross_income, costs_deductions, exempt_income, tax_discounts, withholdings, patrimony)
+        calculated_tax = tax_payment(uvt_value, gross_income, costs_deductions, exempt_income, tax_discounts, withholdings, patrimony)
         
         self.assertAlmostEqual(calculated_tax, expected_result)
         
@@ -32,7 +32,7 @@ class tests(unittest.TestCase):
 
         expected_result = (100_000_000, 2_125, 28, 27_000_000, 0)
 
-        calculated_tax = main.tax_payment(uvt_value, gross_income, costs_deductions, exempt_income, tax_discounts, withholdings, patrimony)
+        calculated_tax = tax_payment(uvt_value, gross_income, costs_deductions, exempt_income, tax_discounts, withholdings, patrimony)
 
         self.assertEqual(calculated_tax, expected_result)
 
@@ -47,7 +47,7 @@ class tests(unittest.TestCase):
 
         expected_result = (61_718_000, 1_311, 19, 10_226_420, 0)
 
-        calculated_tax = main.tax_payment(uvt_value, gross_income, costs_deductions, exempt_income, tax_discounts, withholdings, patrimony)
+        calculated_tax = tax_payment(uvt_value, gross_income, costs_deductions, exempt_income, tax_discounts, withholdings, patrimony)
 
         self.assertEqual(calculated_tax, expected_result)
 
@@ -62,7 +62,7 @@ class tests(unittest.TestCase):
 
         expected_result = (5_000_000, 106, 0, -500_000, 1_000_000)
 
-        calculated_tax = main.tax_payment(uvt_value, gross_income, costs_deductions, exempt_income, tax_discounts, withholdings, patrimony)
+        calculated_tax = tax_payment(uvt_value, gross_income, costs_deductions, exempt_income, tax_discounts, withholdings, patrimony)
 
         self.assertEqual(calculated_tax, expected_result)
 
@@ -78,7 +78,7 @@ class tests(unittest.TestCase):
         
         expected_result = 440_000_000, 9_349, 35, 147_000_000, 0
 
-        calculated_tax = main.tax_payment(uvt_value, gross_income, costs_deductions, exempt_income, tax_discounts, withholdings, patrimony)
+        calculated_tax = tax_payment(uvt_value, gross_income, costs_deductions, exempt_income, tax_discounts, withholdings, patrimony)
             
         self.assertEqual(calculated_tax, expected_result)
 
@@ -93,7 +93,7 @@ class tests(unittest.TestCase):
 
         expected_result = (50_000_000, 1_062, 0, -500_000, 1_000_000)
 
-        calculated_tax = main.tax_payment(uvt_value, gross_income, costs_deductions, exempt_income, tax_discounts, withholdings, patrimony)
+        calculated_tax = tax_payment(uvt_value, gross_income, costs_deductions, exempt_income, tax_discounts, withholdings, patrimony)
         
         self.assertEqual(calculated_tax, expected_result)
 
@@ -109,13 +109,13 @@ class tests(unittest.TestCase):
 
         # Como se espera un error, se va a la lógica del programa y se verifica el caso de error, el cual es la renta exenta negativa.
         try:
-            expected_result = main.tax_payment(uvt_value, gross_income, costs_deductions, exempt_income, tax_discounts, withholdings, patrimony)
+            expected_result = tax_payment(uvt_value, gross_income, costs_deductions, exempt_income, tax_discounts, withholdings, patrimony)
 
             self.fail("No sirvió bro")
 
         #   Una vez verificado que el error suceda, se trae la excepción y se muestra el mensaje al usuario.
 
-        except main.ErrorRentaExenta as ex:
+        except ErrorRentaExenta as ex:
             pass
 
     def test_error_2(self):
@@ -129,11 +129,11 @@ class tests(unittest.TestCase):
         patrimony = 50_000_000
 
         try:
-            expected_result = main.tax_payment(uvt_value, gross_income, costs_deductions, exempt_income, tax_discounts, withholdings, patrimony)
+            expected_result = tax_payment(uvt_value, gross_income, costs_deductions, exempt_income, tax_discounts, withholdings, patrimony)
 
             self.fail("No sirvió bro")
 
-        except main.ErrorBaseGravable as ex:
+        except ErrorBaseGravable as ex:
             pass
 
     def test_error_3(self):
@@ -147,11 +147,11 @@ class tests(unittest.TestCase):
         patrimony = 150_000_000
 
         try:
-            expected_result = main.tax_payment(uvt_value, gross_income, costs_deductions, exempt_income, tax_discounts, withholdings, patrimony)
+            expected_result = tax_payment(uvt_value, gross_income, costs_deductions, exempt_income, tax_discounts, withholdings, patrimony)
 
             self.fail("No sirvió bro")
 
-        except main.ErrorBaseGravable as ex:
+        except ErrorBaseGravable as ex:
             pass
 
     def test_error_4(self):
@@ -165,13 +165,12 @@ class tests(unittest.TestCase):
         patrimony = 0
 
         try:
-            expected_result = main.tax_payment(uvt_value, gross_income, costs_deductions, exempt_income, tax_discounts, withholdings, patrimony)
+            expected_result = tax_payment(uvt_value, gross_income, costs_deductions, exempt_income, tax_discounts, withholdings, patrimony)
 
             self.fail("No sirvió bro")
 
-        except main.ErrorBaseGravable as ex:
+        except ErrorBaseGravable as ex:
             pass
 
 if __name__ == '__main__':
     unittest.main()
-
