@@ -11,10 +11,15 @@ sys.path.append("src")
 
 from model.Logic_taxes import tax_payment, ErrorRentaExenta, ErrorBaseGravable
 
+class ErrorDatosIngresados(Exception):
+    pass
+
 class TaxesApp(App):
     def build(self):
+        # Se arma la estructura visual del formulario usando un grid de 2 columnas
         contenedor = GridLayout(cols=2, padding=20, spacing=20)
 
+        # Cada par de líneas crea una etiqueta y un campo de texto para cada dato necesario
         contenedor.add_widget(Label(text=" Ingresa el valor de la UVT: "))
         self.tax_base_uvt = TextInput(font_size=30)
         contenedor.add_widget(self.tax_base_uvt)
@@ -43,70 +48,73 @@ class TaxesApp(App):
         self.patrimonio = TextInput(font_size=30)
         contenedor.add_widget(self.patrimonio)
 
+        # Etiqueta donde se mostrará el resultado final del cálculo
         self.resultado = Label()
         contenedor.add_widget(self.resultado)
 
+        # Botón para realizar el cálculo del impuesto
         calcular = Button(text="Calcular", font_size=40)
         contenedor.add_widget(calcular)
 
-        # Conectar con el callback con el evento press del boton
+        # Se conecta el botón al método que realizará los cálculos cuando se presione
         calcular.bind(on_press=self.saldo_a_favor)
 
         return contenedor
 
     def saldo_a_favor(self, value):
         try:
-            self.validar()  # Llamar al método de validación
-            
-            # Obtener los valores de entrada
+            self.validar() 
+            # Recuperación de todos los datos ingresados por el usuario
             uvt_value = float(self.tax_base_uvt.text)
             gross_income = float(self.gross_income.text)
             costs_deductions = float(self.costos_deducciones.text)
             exempt_income = float(self.renta_exenta.text)
             tax_discounts = float(self.descuentos_tributarios.text)
             withholdings = float(self.retenciones.text)
-            patrimony = float(self.patrimonio.text)  # Aunque no se usa en el cálculo
+            patrimony = float(self.patrimonio.text) 
 
-            # Llamar a la función de cálculo
+            # Se llama la función lógica que contiene el cálculo del impuesto
             tax_base, tax_base_uvt, rate, calculated_tax, balance_favor = tax_payment(
                 uvt_value, gross_income, costs_deductions, exempt_income, tax_discounts, withholdings, patrimony
             )
 
-            # Mostrar el resultado
+            # Se prepara el resumen del resultado para mostrarlo en pantalla
             self.resultado.text = f"Base Gravable: {tax_base}, Base Gravable UVT: {tax_base_uvt}, Tasa: {rate}%, Impuesto Calculado: {calculated_tax}, Saldo a Favor: {balance_favor}"
 
+        # Si se ingresa texto no numérico, se lanza este mensaje
         except ValueError as err:
             self.resultado.text = "El valor ingresado no es un número válido. Ingrese un número correcto, por ejemplo 500000.00"
+
+        # Captura errores específicos del modelo de cálculo
         except (ErrorRentaExenta, ErrorBaseGravable) as err:
             self.resultado.text = str(err)
+
+        # Por si ocurre un error, se lanza una ventana con detalles del error.
         except Exception as err:
             self.mostrar_error(err)
 
     def mostrar_error(self, err):
         """ 
-        Abre una ventana emergente, con un texto y un botón para cerrar 
-        Parámetros: 
-        err: Mensaje de error que queremos mostrar en la ventana        
+        Crea una ventana emergente sencilla para mostrar errores que no estaban previstos 
         """
 
-        # contenido es el contenedor donde vamos a agregar los widgets de la ventana
+        # Este layout contiene el mensaje y el botón de cierre
         contenido = GridLayout(cols=1)
-        # Creamos el Label que contiene el mensaje de error
         contenido.add_widget(Label(text=str(err)))
-        # Creamos el botón para cerrar la ventana
         cerrar = Button(text="Cerrar")
         contenido.add_widget(cerrar)
-        # Creamos la ventana emergente con el widget Popup de Kivy
+
         popup = Popup(title="Error", content=contenido)
-        # Conectamos el evento del botón con el método dismiss que cierra el popup
+
+        # Acción que permite cerrar la ventana al presionar el botón
         cerrar.bind(on_press=popup.dismiss)
-        # Mostramos la ventana emergente
         popup.open()
 
     def validar(self):
         """
-        Verifica que todos los datos ingresados por el usuario sean correctos
+        Pequeña revisión para evitar errores comunes al digitar los datos
         """
+        # A continuación se revisa campo por campo si lo ingresado es un valor ingresado vállido. 
         if not self.tax_base_uvt.text.isnumeric():
             raise ErrorDatosIngresados("El Valor del uvt debe ser un número válido")
 
@@ -128,8 +136,6 @@ class TaxesApp(App):
         if not self.patrimonio.text.isnumeric():
             raise ErrorDatosIngresados("El valor ingresado de patrimonio debe ser un número válido")
 
-class ErrorDatosIngresados(Exception):
-    pass
 
 if __name__ == "__main__":
     TaxesApp().run()
