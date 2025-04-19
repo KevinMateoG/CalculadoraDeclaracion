@@ -1,7 +1,8 @@
 import sys
 sys.path.append("src/model")  
-import main
+from model.Logic_taxes import tax_payment
 
+# Calcula el impuesto con los datos ingresados por el usuario
 def calcular_impuesto():
     uvt_value = int(input("Ingrese el valor de la UVT: "))
     gross_income = int(input("Ingrese el ingreso bruto: "))
@@ -13,16 +14,21 @@ def calcular_impuesto():
 
     try:
         result = main.tax_payment(uvt_value, gross_income, costs_deductions, exempt_income, tax_discounts, withholdings, patrimony)
+        
+        # Desglose de los resultados obtenidos
         print("Base Gravable:", result[0])
         print("Base Gravable en UVT:", result[1])
         print("Tarifa de Impuesto:", result[2], "%")
         print("Impuesto Calculado:", result[3])
         print("Balance a Favor:", result[4])
+    
+    # Manejo de situaciones especiales que pueden surgir con los datos ingresados
     except main.ErrorRentaExenta as ex:
         print("Error:", ex)
     except main.ErrorBaseGravable as ex:
         print("Error:", ex)
 
+# Solo se encarga de probar si los datos lanzan errores sin mostrar cálculos
 def verificar_errores():
     uvt_value = int(input("Ingrese el valor de la UVT: "))
     gross_income = int(input("Ingrese el ingreso bruto: "))
@@ -39,6 +45,7 @@ def verificar_errores():
     except main.ErrorBaseGravable as ex:
         print("Error:", ex)
 
+# Menú simple para navegar entre opciones
 def main():
     while True:
         print("Menú Principal")

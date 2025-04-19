@@ -1,5 +1,6 @@
 # PROYECTO CALCULADORA DE IMPUESTO A PAGAR DE DECLARACIÓN DE RENTA 
 ### by Cristian David Toro Arboleda & Pedro Hernández
+### Tercera entrega by Pedro Hernández & Sara Rojas Martínez 
 
 Calculadora que automáticamente calcula (valga la redundancia) el impuesto a pagar a la DIAN al declarar renta.
 
