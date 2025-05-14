@@ -30,8 +30,19 @@ class ControllerDeclarations:
     def Insertar(tax_payment : tax_payment):
         cursor = ControllerDeclarations.ObtenerCursor()
         cursor.execute(f"""INSERT INTO declaraciones (valor_uvt, ingresos_brutos, costos_deducciones, rentas_exentas, descuentos_tributarios, retenciones_fuente, patrimonio_neto)
-                       VALUES ('{tax_payment.uvt_value}', '{tax_payment.gross_income}', '{tax_payment.costs_deductions}', '{tax_payment.exempt_income}', '{tax_payment.tax_discounts}'
-                       '{tax_payment.withholdings}', '{tax_payment.patrimony}')""")
+                       VALUES (%s, %s, %s, %s, %s, %s, %s)"""
+                       (
+                            tax_payment.uvt_value,
+                            tax_payment.gross_income,
+                            tax_payment.costs_deductions,
+                            tax_payment.exempt_income,
+                            tax_payment.tax_discounts,
+                            tax_payment.withholdings,
+                            tax_payment.patrimony
+
+                       )
+                       
+                       )
         
         cursor.connection.commit()
 
