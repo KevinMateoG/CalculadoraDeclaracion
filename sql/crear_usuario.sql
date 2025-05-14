@@ -1,5 +1,6 @@
 CREATE TABLE if not exists users(id_usuario INT PRIMARY KEY,
-                   nombre VARCHAR(30),
+                   nombres VARCHAR(30),
+                   apellidos VARCHAR(30),
                    documento_identidad VARCHAR(15),
                    fecha_nacimiento DATE(11),
                    correo VARCHAR(100)
