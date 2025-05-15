@@ -57,5 +57,16 @@ En el archivo test.py tenemos todas las pruebas unitarias donde contenemos 4 pru
 -	Impuesto a pagar
 -	Saldo a favor (Si aplica)
 
-## Audio con el experto
-Link de Drive: https://drive.google.com/file/d/15PLIftSmdbX2hj9vXdWDiRgb2k7XdemK/view?usp=sharing
+## ENTREGABLE DE BASES DE DATOS
+
+**¿Cómo crear la base de datos?**
+Ingresa a neon.tech y crea una cuenta o utiliza una ya existente, sigue los pasos que te sugiere la página y crea una base de datos.
+
+**¿Cómo conectar mi base de datos al proyecto?**
+Dentro de la consola de la base de datos ingresa a branches, luego a production y dale clic al botón "connect", luego cambia el modo de "Connection string" a "Parameters only" y copia todos los datos que te provee; una vez seguidos estos pasos, ve al proyecto de Python y pega todos esos datos en el archivo llamado SecretConfig.py y listo.
+
+**¿Cómo ejecutar el programa?**
+Si deseas ejecutar la interfaz gráfica con todas las funcionalidades de bases de datos ve a:
+```
+"src/view/interfaz_sql.py"
+```
