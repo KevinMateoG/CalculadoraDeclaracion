@@ -41,13 +41,31 @@ class ControladorUsuarios:
 
         cursor.connection.commit()
 
-    def BuscarUsuarioId(id):
+    def BuscarUsuario(nombres) -> Usuario:
 
         cursor = ControladorUsuarios.ObtenerCursor()
 
-        cursor.execute(f"""select id_usuario, nombres, apellidos, documento_identidad, fecha_nacimiento, correo from usuarios where id_usuario = '{id}'""" )
+        cursor.execute(f"""select id_usuario, nombres, apellidos, documento_identidad, fecha_nacimiento, correo from usuarios where nombres = '{nombres}'""" )
         fila = cursor.fetchone()
         resultado = Usuario(id=fila[0], nombres=fila[1], apellidos=fila[2], documento_identidad=fila[3], fecha_nacimiento=fila[4], correo=fila[5])
+        return resultado
+    
+    def BuscarPorID(id):
+        cursor = ControladorUsuarios.ObtenerCursor()
+
+        consulta = f"""select id_usuario, nombres, apellidos, documento_identidad, fecha_nacimiento, correo from usuarios where id_usuario = '{id}'"""
+
+        cursor.execute(consulta)
+        lista = cursor.fetchall()
+        if lista is None or lista.__len__ == 0:
+            return
+
+        resultado = []
+
+        for fila in lista:                
+            usuario = Usuario(id=fila[0], nombres=fila[1], apellidos=fila[2], documento_identidad=fila[3], fecha_nacimiento=fila[4], correo=fila[5])
+            resultado.append(usuario)
+            
         return resultado
 
     def ObtenerCursor():
