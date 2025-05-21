@@ -53,7 +53,7 @@ class ControladorUsuarios:
     def BuscarPorID(id):
         cursor = ControladorUsuarios.ObtenerCursor()
 
-        consulta = f"""select id_usuario, nombres, apellidos, documento_identidad, fecha_nacimiento, correo from usuarios where id_usuario = '{id}'"""
+        consulta = f"""select id_usuario, nombres, apellidos, documento_identidad, fecha_nacimiento, correo from users where id_usuario = '{id}'"""
 
         cursor.execute(consulta)
         lista = cursor.fetchall()
@@ -69,7 +69,6 @@ class ControladorUsuarios:
         return resultado
 
     def ObtenerCursor():
-        connection = psycopg2.connect(database=SecretConfig.PGDATABASE, user=SecretConfig.PGUSER, password=SecretConfig.PGPASSWORD, host=SecretConfig.PGHOST, port=SecretConfig.PGPORT)
+        connection = psycopg2.connect(database=SecretConfig.PGDATABASE, user=SecretConfig.PGUSER, password=SecretConfig.PGPASSWORD, host=SecretConfig.PGHOST)
         cursor = connection.cursor()
         return cursor
-    
