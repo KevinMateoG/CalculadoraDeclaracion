@@ -1,2 +1,3 @@
-kivy==2.1.0
+kivy
 psycopg2
+flask
