@@ -68,6 +68,26 @@ class ControladorUsuarios:
             
         return resultado
 
+    def ActualizarCampo(cedula, campo, nuevo_valor):
+        """ Actualiza un campo específico para un registro identificado por la cédula """
+        cursor = ControladorUsuarios.ObtenerCursor()
+
+        # Validamos que el campo sea uno de los válidos para prevenir inyecciones SQL
+        campos_validos = [
+           "id_usuario", "nombres", "apellidos", "documento_identidad", "fecha_nacimiento", "correo"
+        ]
+        if campo not in campos_validos:
+            raise ValueError(f"Campo inválido: {campo}")
+
+        # Creamos la consulta con el campo insertado directamente (ya validado)
+        query = f"""
+        UPDATE users
+        SET {campo} = %s
+        WHERE documento_identidad = '%s';
+        """
+        cursor.execute(query, (nuevo_valor, cedula))
+        cursor.connection.commit()
+    
     def ObtenerCursor():
         connection = psycopg2.connect(database=SecretConfig.PGDATABASE, user=SecretConfig.PGUSER, password=SecretConfig.PGPASSWORD, host=SecretConfig.PGHOST)
         cursor = connection.cursor()
