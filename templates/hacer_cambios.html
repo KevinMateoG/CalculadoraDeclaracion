@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+    <a href="/" >Inicio</a>
+    <form action="/lista_tarjetas">
+
+        <h1>Buscar una usuario</h1>
+
+        <p>Ingrese el numero de identificacion que le corresponde</p>
+
+        <div> Campo de cambio: <select name="campo_de_cambio">
+            <option value="01">id usuario</option>
+            <option value="01">nombre</option>
+            <option value="03">apellidos</option>
+            <option value="03">documento_identidad</option>
+            <option value="03">fecha_nacimiento</option>
+            <option value="03">correo</option>
+            
+            </select>
+        <p>Ingrese el numero de documento de identidad </p>
+        <div>
+            documento de identidad: <input type="text" name="campo" />
+        </div>
+        
+        <input type="submit" value="Buscar" />
+    </form>
+</body>
+
+</html>

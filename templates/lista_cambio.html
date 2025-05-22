@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+    <p>
+        Búsqueda para la id : {{ Id_usuario }}
+    </p>
+
+    <!-- La etiqueta table se usa para crear tablas en HTML -->
+    <table>
+        <h1>Resultados de la Búsqueda</h1>
+        <!-- El elemento thead describe el area de encabezado en  la tabla -->
+        <thead style="font-weight: bold;">
+            <tr>
+                <td>id</td>
+                <td>nombres</td>
+                <td>apellidos</td>
+                <td>documento_identidad</td>
+                <td>fecha_nacimiento</td>
+                <td>correo</td>
+            </tr>
+        </thead>
+
+        <!-- El elemento tbody describe el cuerpo de la tabla -->
+        <tbody>
+            {% for us in usuario %}
+            <tr>
+                <td>{{us.id}}</td>
+                <td>{{us.nombres}}</td>
+                <td>{{us.apellidos}}</td>
+                <td>{{us.documento_identidad}}</td>
+                <td>{{us.fecha_nacimiento}}</td>
+                <td>{{us.correo}}</td>
+            </tr>
+            {% endfor %}
+
+
+        </tbody>
+
+    </table>
+
+    
+    
+    
+</body>
+
+</html>
