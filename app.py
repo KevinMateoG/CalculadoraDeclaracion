@@ -17,7 +17,7 @@ def index():
 def buscar():
     return render_template('buscar.html')
 
-@app.errorhandler(ValueError)
+@app.errorhandler(Exception)
 def controlar_errores(err):
     return "ocurrio un error con los datos ingresados :" + str(err)
 
