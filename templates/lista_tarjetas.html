@@ -7,13 +7,12 @@
 
 <body>
     <p>
-        Búsqueda para la id : {{ Id_usuario }}
+        Búsqueda para el ID : {{ Id_usuario }}
     </p>
-
-    <!-- La etiqueta table se usa para crear tablas en HTML -->
+    <center>
     <table>
         <h1>Resultados de la Búsqueda</h1>
-        <!-- El elemento thead describe el area de encabezado en  la tabla -->
+
         <thead style="font-weight: bold;">
             <tr>
                 <td>id</td>
@@ -25,7 +24,6 @@
             </tr>
         </thead>
 
-        <!-- El elemento tbody describe el cuerpo de la tabla -->
         <tbody>
             {% for us in usuario %}
             <tr>
@@ -37,14 +35,10 @@
                 <td>{{us.correo}}</td>
             </tr>
             {% endfor %}
-
-
         </tbody>
 
     </table>
-
-    
-    
+    </center>
     
 </body>
 
