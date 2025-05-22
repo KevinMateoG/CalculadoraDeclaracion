@@ -17,6 +17,10 @@ def index():
 def buscar():
     return render_template('buscar.html')
 
+@app.errorhandler(ValueError)
+def controlar_errores(err):
+    return "ocurrio un error con los datos ingresados :" + str(err)
+
 @app.route('/lista_tarjetas')
 def lista_tarjetas():
     usuario = ControladorUsuarios.BuscarPorID( request.args["id_usuario"]  )
