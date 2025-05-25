@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+    <a href="/insertar" >atras</a>
+    <center>
+    <table>
+        <h1>Asi se insertaron tus datos</h1>
+
+        <thead style="font-weight: bold;">
+            <tr>
+                <td>id</td>
+                <td>nombres</td>
+                <td>apellidos</td>
+                <td>documento_identidad</td>
+                <td>fecha_nacimiento</td>
+                <td>correo</td>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for us in usuario %}
+            <tr>
+                <td>{{us.id}}</td>
+                <td>{{us.nombres}}</td>
+                <td>{{us.apellidos}}</td>
+                <td>{{us.documento_identidad}}</td>
+                <td>{{us.fecha_nacimiento}}</td>
+                <td>{{us.correo}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+    </center>
+    
+</body>
+
+</html>

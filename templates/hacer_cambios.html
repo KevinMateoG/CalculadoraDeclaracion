@@ -8,29 +8,29 @@
 <body>
     <a href="/" >Inicio</a>
     <form action="/lista_cambio">
-
-        <h1>Buscar una usuario</h1>
-
-        <p>Ingrese el numero de identificacion que le corresponde</p>
-
+        <center>
+        <h1>Cambiar dato</h1>
         <div> Campo de cambio: <select name="campo_de_cambio">
             <option value="id_usuario">id usuario</option>
             <option value="nombres">nombre</option>
             <option value="apellidos">apellidos</option>
-            <option value="documento_identidad">documento_identidad</option>
             <option value="fecha_nacimiento">fecha_nacimiento</option>
             <option value="correo">correo</option>
             
             </select>
+        </div>
         <p>Ingrese el numero de documento de identidad </p>
+
         <div>
             documento de identidad: <input type="number" name="documento_identidad" />
         </div>
+
         <div>
             cambio: <input type="text" name="cambio"/>
         </div>
         <input type="submit" value="Buscar" />
     </form>
+    </center>
 </body>
 
 </html>
