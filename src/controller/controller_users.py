@@ -71,7 +71,7 @@ class ControladorUsuarios:
     def ActualizarCampo(cedula, campo, nuevo_valor):
         """ Actualiza un campo específico para un registro identificado por la cédula """
         cursor = ControladorUsuarios.ObtenerCursor()
-
+        
         # Validamos que el campo sea uno de los válidos para prevenir inyecciones SQL
         campos_validos = [
            "id_usuario", "nombres", "apellidos", "documento_identidad", "fecha_nacimiento", "correo"
@@ -85,7 +85,7 @@ class ControladorUsuarios:
         SET {campo} = %s
         WHERE documento_identidad = '%s';
         """
-        cursor.execute(query, (nuevo_valor, cedula))
+        cursor.execute(query, (nuevo_valor, int(cedula)))
         cursor.connection.commit()
     
     def ObtenerCursor():
