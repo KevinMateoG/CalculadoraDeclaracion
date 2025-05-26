@@ -1,20 +1,70 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 
 <head>
+  <meta charset="UTF-8">
+  <title>Gestor de Usuarios</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
 
+    .container {
+      background: white;
+      padding: 2rem 3rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #666;
+    }
+
+    .menu {
+      margin-top: 1.5rem;
+    }
+
+    .menu a {
+      display: inline-block;
+      margin: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      text-decoration: none;
+      color: white;
+      background-color: #007BFF;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    .menu a:hover {
+      background-color: #0056b3;
+    }
+  </style>
 </head>
 
 <body>
-
-  <h1>Bienvenido al gestor de usuarios</h1>
-
-  <p>Opciones</p>
-  <div><a href="/buscar" >Buscar</a></div>
-  <div><a href="/hacer_cambios" >hacer cambios</a></div>
-  <div><a href="/insertar">insertar</a></div>
-  
-
+  <div class="container">
+    <h1>Bienvenido al gestor de usuarios</h1>
+    <p>Opciones</p>
+    <div class="menu">
+      <a href="/buscar">Buscar</a>
+      <a href="/hacer_cambios">Hacer cambios</a>
+      <a href="/insertar">Insertar</a>
+    </div>
+  </div>
 </body>
 
 </html>
