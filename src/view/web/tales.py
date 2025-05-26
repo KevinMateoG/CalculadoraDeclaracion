@@ -33,7 +33,8 @@ def hacer_cambios():
 def lista_cambio():
     ControladorUsuarios.ActualizarCampo(request.args["documento_identidad"], request.args["campo_de_cambio"],
                                                   request.args["cambio"])
-    return render_template('lista_cambio.html')
+    usuario = ControladorUsuarios.BuscarUsuarioDocumentoDeIdentidad(request.args["documento_identidad"])
+    return render_template('lista_cambio.html', usuario=usuario)
 
 @blueprint.route('/insertar')
 def insertar():

@@ -50,6 +50,18 @@ class ControladorUsuarios:
         resultado = Usuario(id=fila[0], nombres=fila[1], apellidos=fila[2], documento_identidad=fila[3], fecha_nacimiento=fila[4], correo=fila[5])
         return resultado
     
+    def BuscarUsuarioDocumentoDeIdentidad(documento_identidad) -> Usuario:
+
+        cursor = ControladorUsuarios.ObtenerCursor()
+
+        cursor.execute(f"""select id_usuario, nombres, apellidos, documento_identidad, fecha_nacimiento, correo from users where documento_identidad = '{documento_identidad}'""" )
+        lista = cursor.fetchall()
+        resultado = []
+        for fila in lista:
+            usuario = Usuario(id=fila[0], nombres=fila[1], apellidos=fila[2], documento_identidad=fila[3], fecha_nacimiento=fila[4], correo=fila[5])
+            resultado.append(usuario)
+        return resultado
+    
     def BuscarPorID(id):
         cursor = ControladorUsuarios.ObtenerCursor()
 
@@ -92,3 +104,4 @@ class ControladorUsuarios:
         connection = psycopg2.connect(database=SecretConfig.PGDATABASE, user=SecretConfig.PGUSER, password=SecretConfig.PGPASSWORD, host=SecretConfig.PGHOST)
         cursor = connection.cursor()
         return cursor
+print(ControladorUsuarios.BuscarUsuarioDocumentoDeIdentidad(70601))
