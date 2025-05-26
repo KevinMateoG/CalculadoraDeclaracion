@@ -20,10 +20,10 @@ def index():
 def buscar():
     return render_template('buscar.html')
 
-@blueprint.route('/lista_tarjetas')
+@blueprint.route('/lista_buscar')
 def lista_tarjetas():
     usuario = ControladorUsuarios.BuscarPorID( request.args["id_usuario"]  )
-    return render_template('lista_tarjetas.html', Id_usuario=request.args["id_usuario"], usuario=usuario  )
+    return render_template('lista_buscar.html', Id_usuario=request.args["id_usuario"], usuario=usuario  )
 
 @blueprint.route('/hacer_cambios')
 def hacer_cambios():
