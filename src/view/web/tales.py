@@ -6,7 +6,6 @@ import sys
 sys.path.append("src")
 from model.usuario import *
 from controller.controller_users import ControladorUsuarios
-import SecretConfig
 
 @blueprint.route("/vista")
 def vista():
