@@ -70,3 +70,27 @@ Si deseas ejecutar la interfaz gráfica con todas las funcionalidades de bases d
 ```
 "src/view/interfaz_sql.py"
 ```
+
+## ENTREGABLE DE PÁGINA WEB
+
+**¿Cómo ejecutar la aplicación web?**
+Para empezar, debes de descargar la librería de Flask, luego, ejecuta directamente desde el IDE o puedes ejecutar el siguiente comando desde la terminal:
+```
+python3 -m flask run --debug
+```
+
+**¿Cómo ejecutarlo desde Render.com?**
+
+Primero, tienes que ingresar a Render.com y crear una cuenta, luego de eso, crea un proyecto nuevo e ingresa los siguientes parámetros donde te los pida:
+
+En el build command, ingresa:
+```
+pip install -r requirements.txt
+```
+En Start Command ingresa:
+```
+flask run -p 10000 -h 0.0.0.0
+```
+Y cuando te pida url del proyecto ingresa el link de este proyecto de Github.
+
+Una vez hechos los pasos anteriores, inicializa la página y espera que se construya, una vez hecho eso, abre el link en una pestaña nueva y listo
